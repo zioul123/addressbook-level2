@@ -21,12 +21,16 @@ public class StatsCommand extends Command {
     @Override
     public CommandResult execute() {
         List<ReadOnlyPerson> allPersons = addressBook.getAllPersons().immutableListView();
+        return new CommandResult(
+                createStatsMessage(allPersons)
+                + "\n" + Messages.MESSAGE_STATS_LISTED_OVERVIEW);
+    }
+    
+    public String createStatsMessage(List<ReadOnlyPerson> allPersons) {
         int numberOfPeople = allPersons.size();
         String isOrAre = numberOfPeople == 1 ? "is" : "are";
         String peopleOrPerson = numberOfPeople == 1 ? "person" : "people";
-        return new CommandResult(
-                String.format(
-                        Messages.MESSAGE_STATS_NUMBER_OF_PERSONS, isOrAre, numberOfPeople, peopleOrPerson)
-                + "\n" + Messages.MESSAGE_STATS_LISTED_OVERVIEW);
+        return String.format(
+                Messages.MESSAGE_STATS_NUMBER_OF_PERSONS, isOrAre, numberOfPeople, peopleOrPerson);
     }
 }
