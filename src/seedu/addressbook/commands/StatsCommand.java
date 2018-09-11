@@ -1,5 +1,6 @@
 package seedu.addressbook.commands;
 
+import seedu.addressbook.common.Messages;
 import seedu.addressbook.data.person.ReadOnlyPerson;
 
 import java.util.List;
@@ -19,7 +20,8 @@ public class StatsCommand extends Command {
 
     @Override
     public CommandResult execute() {
-        List<ReadOnlyPerson> allPersons = addressBook.getAllPersons().immutableListView();
-        return new CommandResult(getMessageForPersonListShownSummary(allPersons), allPersons);
+        //List<ReadOnlyPerson> allPersons = addressBook.getAllPersons().immutableListView();
+        return new CommandResult(Messages.MESSAGE_STATS_LISTED_OVERVIEW);
+        //return new CommandResult(getMessageForPersonListShownSummary(allPersons), allPersons);
     }
 }
