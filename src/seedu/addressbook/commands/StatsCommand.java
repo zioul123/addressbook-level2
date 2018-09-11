@@ -20,8 +20,14 @@ public class StatsCommand extends Command {
 
     @Override
     public CommandResult execute() {
-        //List<ReadOnlyPerson> allPersons = addressBook.getAllPersons().immutableListView();
-        return new CommandResult(Messages.MESSAGE_STATS_LISTED_OVERVIEW);
+        List<ReadOnlyPerson> allPersons = addressBook.getAllPersons().immutableListView();
+        int numberOfPeople = allPersons.size();
+        String isOrAre = numberOfPeople == 1 ? "is" : "are";
+        String peopleOrPerson = numberOfPeople == 1 ? "person" : "people";
+        return new CommandResult(
+                String.format(
+                        Messages.MESSAGE_STATS_NUMBER_OF_PERSONS, isOrAre, numberOfPeople, peopleOrPerson)
+                + "\n" + Messages.MESSAGE_STATS_LISTED_OVERVIEW);
         //return new CommandResult(getMessageForPersonListShownSummary(allPersons), allPersons);
     }
 }
