@@ -28,6 +28,5 @@ public class StatsCommand extends Command {
                 String.format(
                         Messages.MESSAGE_STATS_NUMBER_OF_PERSONS, isOrAre, numberOfPeople, peopleOrPerson)
                 + "\n" + Messages.MESSAGE_STATS_LISTED_OVERVIEW);
-        //return new CommandResult(getMessageForPersonListShownSummary(allPersons), allPersons);
     }
 }
